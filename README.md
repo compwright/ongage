@@ -23,9 +23,9 @@ const res = await fetch(url, req);
 const data = await res.json();
 ```
 
-## API Support
+## API
 
-### ContactsApi
+### [ContactsApi](https://ongage.atlassian.net/wiki/spaces/HELP/pages/1004175381/Contacts+API+Methods)
 
 * getById(id, listId)
 * getByEmail(email, listId)
