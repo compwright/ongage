@@ -1,0 +1,48 @@
+{
+  "name": "ongage",
+  "version": "0.0.0",
+  "description": "Ongage API client",
+  "source": "dist/node.js",
+  "browser": "dist/browser.min.js",
+  "scripts": {
+    "pretest": "semistandard --fix ./src ./test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build:node": "parcel build ./src/index.js --target node --out-file node.js --no-minify --no-source-maps",
+    "build:browser": "parcel build ./src/index.js --target browser --out-file browser.min.js",
+    "build": "npm run build:node && npm run build:browser",
+    "prepublish": "npm run build && git commit -am \"Build\"",
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "release:pre": "npm version prerelease && npm publish --tag pre --access public",
+    "release:patch": "npm version patch && npm publish --access public",
+    "release:minor": "npm version minor && npm publish --access public",
+    "release:major": "npm version major && npm publish --access public",
+    "changelog": "github_changelog_generator -u compwright -p petition-blitz/email-verifiers && git add CHANGELOG.md && git commit -am \"Updating changelog\""
+  },
+  "keywords": [],
+  "author": "Jonathon Hill <jonathon@compwright.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "jest": "^26.6.3",
+    "parcel-bundler": "^1.12.5",
+    "semistandard": "*"
+  },
+  "semistandard": {
+    "env": [
+      "node",
+      "browser",
+      "jest"
+    ]
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
