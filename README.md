@@ -39,6 +39,11 @@ const data = await res.json();
 * changeStatus({ emails, change_to, ocx_child_id, ocx_connection_id }, listId)
 * changeEmail({ email, new_email }, listId)
 
+### [ListsApi](https://ongage.atlassian.net/wiki/spaces/HELP/pages/1027965140/List+API+Methods)
+
+* get(id)
+* getAll({ name, type, sort, order, offset, limit })
+
 ## License
 
 MIT license
