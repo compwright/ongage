@@ -1,6 +1,6 @@
 {
   "name": "ongage",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Ongage API client",
   "main": "dist/node.js",
   "source": "dist/node.js",
