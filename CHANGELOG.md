@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.0](https://github.com/compwright/ongage/tree/v1.1.0) (2021-05-20)
+
+[Full Changelog](https://github.com/compwright/ongage/compare/v1.0.0...v1.1.0)
+
 ## [v1.0.0](https://github.com/compwright/ongage/tree/v1.0.0) (2021-04-29)
 
 [Full Changelog](https://github.com/compwright/ongage/compare/dc8da287bb4c5aa48cc8e15b16a0ffd5727321b8...v1.0.0)
