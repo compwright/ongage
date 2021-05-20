@@ -31,13 +31,14 @@ changelog-commit: changelog
 	git add CHANGELOG.md
 	git diff-index --quiet HEAD || git commit -m "Updating changelog"
 
-cleanup: changelog-commit
+cleanup:
+	git push origin master
 	git push origin --tags
 
-release-pre: build-commit tag-pre publish-pre cleanup
+release-pre: build-commit tag-pre publish-pre changelog-commit cleanup
 
-release-patch: build-commit tag-patch publish cleanup
+release-patch: build-commit tag-patch publish changelog-commit cleanup
 
-release-minor: build-commit tag-minor publish cleanup
+release-minor: build-commit tag-minor publish changelog-commit cleanup
 
-release-major: build-commit tag-major publish cleanup
+release-major: build-commit tag-major publish changelog-commit cleanup
