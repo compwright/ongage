@@ -270,6 +270,32 @@ class ContactsApi extends _Api.Api {
 }
 
 exports.ContactsApi = ContactsApi;
+},{"./Api":"Hm7i","./utils":"FOZT"}],"eOSc":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ListsApi = void 0;
+
+var _Api = require("./Api");
+
+var _utils = require("./utils");
+
+class ListsApi extends _Api.Api {
+  get(id) {
+    const parts = [(0, _utils.get)('/lists/' + encodeURIComponent(id))];
+    return this.compile(parts);
+  }
+
+  getAll(config = {}) {
+    const parts = [(0, _utils.get)('/lists', config)];
+    return this.compile(parts);
+  }
+
+}
+
+exports.ListsApi = ListsApi;
 },{"./Api":"Hm7i","./utils":"FOZT"}],"Focm":[function(require,module,exports) {
 "use strict";
 
@@ -282,6 +308,14 @@ Object.defineProperty(exports, "ContactsApi", {
     return _ContactsApi.ContactsApi;
   }
 });
+Object.defineProperty(exports, "ListsApi", {
+  enumerable: true,
+  get: function () {
+    return _ListsApi.ListsApi;
+  }
+});
 
 var _ContactsApi = require("./ContactsApi");
-},{"./ContactsApi":"DA8m"}]},{},["Focm"], null)
+
+var _ListsApi = require("./ListsApi");
+},{"./ContactsApi":"DA8m","./ListsApi":"eOSc"}]},{},["Focm"], null)
