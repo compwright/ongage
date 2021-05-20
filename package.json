@@ -15,7 +15,8 @@
   "author": "Jonathon Hill <jonathon@compwright.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "qs": "^6.5.2"
   },
   "peerDependencies": {
     "node-fetch": "^2.6.1"
