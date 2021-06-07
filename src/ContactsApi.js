@@ -24,14 +24,14 @@ export class ContactsApi extends Api {
   create (payload, listId) {
     const parts = [];
     if (listId) parts.push(list(listId));
-    parts.push(post('/contacts', payload));
+    parts.push(post('/v2/contacts', payload));
     return this.compile(parts);
   }
 
   update (payload, listId) {
     const parts = [];
     if (listId) parts.push(list(listId));
-    parts.push(put('/contacts', payload));
+    parts.push(put('/v2/contacts', payload));
     return this.compile(parts);
   }
 
@@ -45,14 +45,14 @@ export class ContactsApi extends Api {
   changeEmail (payload, listId) {
     const parts = [];
     if (listId) parts.push(list(listId));
-    parts.push(post('/v2/contacts/change_email', payload));
+    parts.push(put('/contacts/change_email', payload));
     return this.compile(parts);
   }
 
   delete (payload, listId) {
     const parts = [];
     if (listId) parts.push(list(listId));
-    parts.push(post('/v2/contacts/delete', payload));
+    parts.push(post('/contacts/delete', payload));
     return this.compile(parts);
   }
 }

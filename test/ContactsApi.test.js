@@ -2,7 +2,7 @@ import { ContactsApi } from '../src';
 
 const api = new ContactsApi('a', 'b', 'c');
 
-test('ContactsApi.getById()', () => {
+test('getById()', () => {
   let req = api.getById(5);
   expect(req).toStrictEqual({
     url: 'https://api.ongage.net/api/contacts/by_id/5',
@@ -26,7 +26,7 @@ test('ContactsApi.getById()', () => {
   });
 });
 
-test('ContactsApi.getByEmail()', () => {
+test('getByEmail()', () => {
   let req = api.getByEmail('jonathon@compwright.com');
   expect(req).toStrictEqual({
     url: 'https://api.ongage.net/api/contacts/by_email/jonathon%40compwright.com',
@@ -50,7 +50,7 @@ test('ContactsApi.getByEmail()', () => {
   });
 });
 
-test('ContactsApi.getListsByEmail()', () => {
+test('getListsByEmail()', () => {
   const req = api.getListsByEmail('jonathon@compwright.com');
   expect(req).toStrictEqual({
     url: 'https://api.ongage.net/api/contacts/cross_account?email=jonathon%40compwright.com',
@@ -63,10 +63,10 @@ test('ContactsApi.getListsByEmail()', () => {
   });
 });
 
-test('ContactsApi.create()', () => {
+test('create()', () => {
   let req = api.create({ email: 'jonathon@compwright.com' });
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/api/contacts',
+    url: 'https://api.ongage.net/api/v2/contacts',
     method: 'POST',
     headers: {
       X_USERNAME: 'a',
@@ -79,7 +79,7 @@ test('ContactsApi.create()', () => {
 
   req = api.create({ email: 'jonathon@compwright.com' }, '1');
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/1/api/contacts',
+    url: 'https://api.ongage.net/1/api/v2/contacts',
     method: 'POST',
     headers: {
       X_USERNAME: 'a',
@@ -91,10 +91,10 @@ test('ContactsApi.create()', () => {
   });
 });
 
-test('ContactsApi.update()', () => {
+test('update()', () => {
   let req = api.update({ email: 'jonathon@compwright.com' });
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/api/contacts',
+    url: 'https://api.ongage.net/api/v2/contacts',
     method: 'PUT',
     headers: {
       X_USERNAME: 'a',
@@ -107,7 +107,7 @@ test('ContactsApi.update()', () => {
 
   req = api.update({ email: 'jonathon@compwright.com' }, '1');
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/1/api/contacts',
+    url: 'https://api.ongage.net/1/api/v2/contacts',
     method: 'PUT',
     headers: {
       X_USERNAME: 'a',
@@ -119,7 +119,7 @@ test('ContactsApi.update()', () => {
   });
 });
 
-test('ContactsApi.changeStatus()', () => {
+test('changeStatus()', () => {
   let req = api.changeStatus({ email: 'jonathon@compwright.com' });
   expect(req).toStrictEqual({
     url: 'https://api.ongage.net/api/v2/contacts/change_status',
@@ -147,11 +147,11 @@ test('ContactsApi.changeStatus()', () => {
   });
 });
 
-test('ContactsApi.changeEmail()', () => {
+test('changeEmail()', () => {
   let req = api.changeEmail({ email: 'jonathon@compwright.com' });
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/api/v2/contacts/change_email',
-    method: 'POST',
+    url: 'https://api.ongage.net/api/contacts/change_email',
+    method: 'PUT',
     headers: {
       X_USERNAME: 'a',
       X_PASSWORD: 'b',
@@ -163,8 +163,8 @@ test('ContactsApi.changeEmail()', () => {
 
   req = api.changeEmail({ email: 'jonathon@compwright.com' }, '1');
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/1/api/v2/contacts/change_email',
-    method: 'POST',
+    url: 'https://api.ongage.net/1/api/contacts/change_email',
+    method: 'PUT',
     headers: {
       X_USERNAME: 'a',
       X_PASSWORD: 'b',
@@ -175,10 +175,10 @@ test('ContactsApi.changeEmail()', () => {
   });
 });
 
-test('ContactsApi.delete()', () => {
+test('delete()', () => {
   let req = api.delete({ email: 'jonathon@compwright.com' });
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/api/v2/contacts/delete',
+    url: 'https://api.ongage.net/api/contacts/delete',
     method: 'POST',
     headers: {
       X_USERNAME: 'a',
@@ -191,7 +191,7 @@ test('ContactsApi.delete()', () => {
 
   req = api.delete({ email: 'jonathon@compwright.com' }, '1');
   expect(req).toStrictEqual({
-    url: 'https://api.ongage.net/1/api/v2/contacts/delete',
+    url: 'https://api.ongage.net/1/api/contacts/delete',
     method: 'POST',
     headers: {
       X_USERNAME: 'a',
