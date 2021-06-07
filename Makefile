@@ -1,13 +1,12 @@
+test:
+	npm test
+
 clean:
 	rm -Rf .parcel-cache
 	rm -Rf dist
 
-build: clean
+build: clean test
 	npx parcel build ./src/index.js
-
-build-commit: build
-	git add -A
-	git diff-index --quiet HEAD || git commit -m "Build"
 
 tag-pre:
 	npm version prerelease
@@ -38,10 +37,10 @@ cleanup:
 	git push origin master
 	git push origin --tags
 
-release-pre: build-commit tag-pre publish-pre changelog-commit cleanup
+release-pre: build tag-pre publish-pre changelog-commit cleanup
 
-release-patch: build-commit tag-patch publish changelog-commit cleanup
+release-patch: build tag-patch publish changelog-commit cleanup
 
-release-minor: build-commit tag-minor publish changelog-commit cleanup
+release-minor: build tag-minor publish changelog-commit cleanup
 
-release-major: build-commit tag-major publish changelog-commit cleanup
+release-major: build tag-major publish changelog-commit cleanup
