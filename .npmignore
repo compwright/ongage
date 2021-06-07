@@ -2,4 +2,5 @@ src/
 test/
 .cache/
 .babelrc
+.parce-cache/
 Makefile

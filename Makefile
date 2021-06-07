@@ -1,6 +1,9 @@
-build:
-	npx parcel build ./src/index.js --target node --out-file node.js --no-minify --no-source-maps
-	npx parcel build ./src/index.js --target browser --out-file browser.min.js
+clean:
+	rm -Rf .parcel-cache
+	rm -Rf dist
+
+build: clean
+	npx parcel build ./src/index.js
 
 build-commit: build
 	git add -A
