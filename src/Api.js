@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import flow from 'lodash/fp/flow'
+import { flow } from 'lodash-es'
 
 export class Api {
   constructor (username, password, account_code) {

@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+import { merge } from 'lodash-es'
 
 export const list = listId => req => merge({}, req, {
   url: `https://api.ongage.net/${encodeURIComponent(listId)}/api`
