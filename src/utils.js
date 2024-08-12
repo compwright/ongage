@@ -1,14 +1,13 @@
-import merge from 'lodash/merge';
-import qs from 'qs';
+import merge from 'lodash/merge'
 
 export const list = listId => req => merge({}, req, {
   url: `https://api.ongage.net/${encodeURIComponent(listId)}/api`
-});
+})
 
 export const get = (path, args) => req => merge({}, req, {
   method: 'GET',
-  url: (req.url || '') + path + (args ? `?${qs.stringify(args)}` : '')
-});
+  url: (req.url || '') + path + (args ? `?${new URLSearchParams(args).toString()}` : '')
+})
 
 export const post = (path, body) => req => merge({}, req, {
   method: 'POST',
@@ -17,7 +16,7 @@ export const post = (path, body) => req => merge({}, req, {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify(body)
-});
+})
 
 export const put = (path, body) => req => merge({}, req, {
   method: 'PUT',
@@ -26,4 +25,4 @@ export const put = (path, body) => req => merge({}, req, {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify(body)
-});
+})

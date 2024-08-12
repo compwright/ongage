@@ -18,7 +18,7 @@ test('get()', () => {
   testFn(fn);
   expect(fn({})).toStrictEqual({
     method: 'GET',
-    url: '/path?foo=foo%20bar&baz=a'
+    url: '/path?foo=foo+bar&baz=a'
   });
   expect(get('/path')({})).toStrictEqual({
     method: 'GET',

@@ -1,46 +1,19 @@
-test:
-	npm test
+.DEFAULT_GOAL := build
+
+lint:
+	./node_modules/.bin/standard --env jest --fix src
+
+test: lint
+	NODE_OPTIONS=--experimental-vm-modules ./node_modules/.bin/jest
+
+test-watch:
+	NODE_OPTIONS=--experimental-vm-modules ./node_modules/.bin/jest --watchAll
 
 clean:
-	rm -Rf .parcel-cache
-	rm -Rf dist
+	rm -Rf ./dist
 
 build: clean test
-	npx parcel build ./src/index.js
+	./node_modules/.bin/unbuild
 
-tag-pre:
-	npm version prerelease
-
-tag-patch:
-	npm version patch
-
-tag-minor:
-	npm version minor
-
-tag-major:
-	npm version major
-
-publish-pre:
-	npm publish --tag pre --access public
-
-publish:
-	npm publish --access public
-
-changelog:
-	github_changelog_generator -u compwright -p ongage
-
-changelog-commit: changelog
-	git add CHANGELOG.md
-	git diff-index --quiet HEAD || git commit -m "Updating changelog"
-
-cleanup:
-	git push origin master
-	git push origin --tags
-
-release-pre: build tag-pre publish-pre changelog-commit cleanup
-
-release-patch: build tag-patch publish changelog-commit cleanup
-
-release-minor: build tag-minor publish changelog-commit cleanup
-
-release-major: build tag-major publish changelog-commit cleanup
+release:
+	./node_modules/.bin/standard-version

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import flow from 'lodash/fp/flow';
+import flow from 'lodash/fp/flow'
 
 export class Api {
   constructor (username, password, account_code) {
@@ -11,10 +11,10 @@ export class Api {
         X_PASSWORD: password,
         X_ACCOUNT_CODE: account_code
       }
-    };
+    }
   }
 
   compile (parts = []) {
-    return flow(parts)(this.defaultRequest);
+    return flow(parts)(this.defaultRequest)
   }
 }
