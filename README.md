@@ -2,8 +2,6 @@
 
 Works by composing fetch-compatible request objects.
 
-Use [node-fetch](https://npmjs.org/package/node-fetch) in Node.js applications.
-
 ## Installation
 
 ```
@@ -13,12 +11,11 @@ $ npm install ongage --save
 ## Usage
 
 ```js
-const fetch = require('node-fetch');
-const { ContactsApi } = require('ongage');
+import { ContactsApi } from 'ongage';
 
-const ongage = new ContactsApi('username', 'password', 'account code');
+const contactsApi = new ContactsApi('username', 'password', 'account code');
 
-const { url, ...req } = ongage.getByEmail('jonathon@compwright.com');
+const { url, ...req } = contactsApi.getByEmail('jonathon@compwright.com');
 const res = await fetch(url, req);
 const data = await res.json();
 ```
@@ -43,6 +40,8 @@ const data = await res.json();
 
 * get(id)
 * getAll({ name, type, sort, order, offset, limit })
+* createExport({ list_id, name, segment_id, mailing_id, date_format, file_format, fields_selected, status })
+* retrieveExport(id)
 
 ## License
 
