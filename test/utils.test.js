@@ -5,49 +5,52 @@ const testFn = fn => {
   expect(fn.length).toBe(1);
 };
 
-test('list()', () => {
-  const fn = list('foo bar');
-  testFn(fn);
-  expect(fn({})).toStrictEqual({
-    url: 'https://api.ongage.net/foo%20bar/api'
-  });
-});
+describe('utils', () => {
 
-test('get()', () => {
-  const fn = get('/path', { foo: 'foo bar', baz: 'a' });
-  testFn(fn);
-  expect(fn({})).toStrictEqual({
-    method: 'GET',
-    url: '/path?foo=foo+bar&baz=a'
+  test('list()', () => {
+    const fn = list('foo bar');
+    testFn(fn);
+    expect(fn({})).toStrictEqual({
+      url: 'https://api.ongage.net/foo%20bar/api'
+    });
   });
-  expect(get('/path')({})).toStrictEqual({
-    method: 'GET',
-    url: '/path'
-  });
-});
 
-test('post()', () => {
-  const fn = post('/path', { foo: 'foo bar', baz: 'a' });
-  testFn(fn);
-  expect(fn({})).toStrictEqual({
-    method: 'POST',
-    url: '/path',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: '{"foo":"foo bar","baz":"a"}'
+  test('get()', () => {
+    const fn = get('/path', { foo: 'foo bar', baz: 'a' });
+    testFn(fn);
+    expect(fn({})).toStrictEqual({
+      method: 'GET',
+      url: '/path?foo=foo+bar&baz=a'
+    });
+    expect(get('/path')({})).toStrictEqual({
+      method: 'GET',
+      url: '/path'
+    });
   });
-});
 
-test('put()', () => {
-  const fn = put('/path', { foo: 'foo bar', baz: 'a' });
-  testFn(fn);
-  expect(fn({})).toStrictEqual({
-    method: 'PUT',
-    url: '/path',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: '{"foo":"foo bar","baz":"a"}'
+  test('post()', () => {
+    const fn = post('/path', { foo: 'foo bar', baz: 'a' });
+    testFn(fn);
+    expect(fn({})).toStrictEqual({
+      method: 'POST',
+      url: '/path',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: '{"foo":"foo bar","baz":"a"}'
+    });
+  });
+
+  test('put()', () => {
+    const fn = put('/path', { foo: 'foo bar', baz: 'a' });
+    testFn(fn);
+    expect(fn({})).toStrictEqual({
+      method: 'PUT',
+      url: '/path',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: '{"foo":"foo bar","baz":"a"}'
+    });
   });
 });
